@@ -3,7 +3,7 @@ import { render } from '@testing-library/react-native';
 import  LinePoke  from '../LinePoke';
 
 describe('LinePoke', () => {
-    test('o componente renderizou', () => {
+    test('teste para saber se o componente renderizou', () => {
         expect(render(<LinePoke />))
     })
 })
