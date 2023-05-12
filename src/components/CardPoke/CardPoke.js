@@ -1,8 +1,10 @@
 import { Image, View, Text, StyleSheet } from "react-native";
+import PokeApi from "../../../services/PokeApi";
 
 
-function CardPoke() {
+function CardPoke(props) {
     return (
+        <>
         <View style={styles.card}>
             <View style={styles.card__top}>
                 <View style={styles.card_top_number}>
@@ -22,7 +24,9 @@ function CardPoke() {
                     style={{ height: 70, width: 70 }}
                 />
             </View>
+            {/* <PokeApi></PokeApi> */}
         </View>
+        </>
     )
 }
 

@@ -1,6 +1,6 @@
 
 import { StyleSheet, View } from 'react-native';
-import LinePoke from './src/LinePoke';
+import LinePoke from './src/components/LinePoke/LinePoke';
 
 export default function App() {
   return (

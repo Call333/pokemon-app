@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
-import CardPoke from './components/CardPoke'
+import { StyleSheet, View } from 'react-native';
+import CardPoke from '../CardPoke/CardPoke'
 
 
-export default function LinePoke() {
+function LinePoke() {
   return (
     <View style={styles.container}>
         <CardPoke></CardPoke>
@@ -20,3 +20,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },  
 });
+
+export default LinePoke;
