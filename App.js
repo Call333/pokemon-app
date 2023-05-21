@@ -1,13 +1,15 @@
 
 import { StyleSheet, View } from 'react-native';
 import LinePoke from './src/components/LinePoke/LinePoke';
+import CardPoke from './src/components/CardPoke/CardPoke';
+import PokeApi, { LoadPokemon } from './src/services/PokeApi';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
       <LinePoke></LinePoke>
-      <LinePoke></LinePoke>
-      <LinePoke></LinePoke>
+      <PokeApi></PokeApi>
     </View>
   );
 }
@@ -18,6 +20,5 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    position: 'relative'
   },
 });

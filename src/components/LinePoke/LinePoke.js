@@ -1,24 +1,24 @@
 import { StyleSheet, View } from 'react-native';
 import CardPoke from '../CardPoke/CardPoke'
 
-
-function LinePoke() {
+function LinePoke() {  
+  const qtdPoke = 0
   return (
     <View style={styles.container}>
-        <CardPoke></CardPoke>
-        <CardPoke></CardPoke>
+      {Array.from({ length: qtdPoke }).map((_, index) => (
+        <CardPoke key={index} />
+      ))}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
         display: 'flex',
+        flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
-    },  
+    },
 });
 
 export default LinePoke;

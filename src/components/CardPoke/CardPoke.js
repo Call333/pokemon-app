@@ -1,5 +1,5 @@
 import { Image, View, Text, StyleSheet } from "react-native";
-import PokeApi from "../../../services/PokeApi";
+import PokeApi from "../../services/PokeApi";
 
 
 function CardPoke(props) {
@@ -8,10 +8,10 @@ function CardPoke(props) {
         <View style={styles.card}>
             <View style={styles.card__top}>
                 <View style={styles.card_top_number}>
-                    <Text>#001</Text>
+                    <Text>{props.id}</Text>
                 </View>
                 <View style={styles.card_top_name}>
-                    <Text>Bulbasaur</Text>
+                    <Text style={{fontWeight: '600'}}>Venusaur</Text>
                 </View>
             </View>
             <View style={styles.card_bottom}>
@@ -20,8 +20,8 @@ function CardPoke(props) {
                     <Text style={styles.type}>Poison</Text>
                 </View>
                 <Image
-                    source={{ uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png' }}
-                    style={{ height: 70, width: 70 }}
+                    source={{ uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png' }}
+                    style={{ height: 80, width: 80 }}
                 />
             </View>
             {/* <PokeApi></PokeApi> */}
@@ -33,14 +33,15 @@ function CardPoke(props) {
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#48C9B0',
-        height: '90%',
-        width: '45%',
+        height: '8em',
+        width: '10em',
         borderRadius: 12,
         display: 'flex',
         flexDirection: 'column',
         padding: 10,
         fontFamily: 'Segoi UI',
         margin: '2%',
+        
     },
     card__top: {
         display: 'flex',
