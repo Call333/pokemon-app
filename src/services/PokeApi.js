@@ -1,18 +1,13 @@
 import { View } from "react-native";
 import { Pokemon } from "./Pokemon"
 import CardPoke from "../components/CardPoke/CardPoke";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export function LoadPokemon(pokemon) {
-    const id = pokemon.id
-    return (
-        <CardPoke id={id}></CardPoke>
-    );
-}
 
 export default function PokeApi() {
 
     const convertPokeApiDetailToPokemon = (pokeDetail) => {
+        let pokemon = new Pokemon();
         pokemon.nome = pokeDetail.name;
         pokemon.id = pokeDetail.id;
 
@@ -23,23 +18,27 @@ export default function PokeApi() {
         pokemon.tipo = type;
 
         pokemon.photoURL = pokeDetail.sprites.other.home.front_default;
-        return pokemon
+        setAgr(pokemon)
     }
 
-    let pokemon = new Pokemon()
-    let urlUnique = `https://pokeapi.co/api/v2/pokemon/venusaur`
+    let [agr, setAgr] = useState(new Pokemon()) 
 
+    console.log(agr.id);
+    let urlUnique = `https://pokeapi.co/api/v2/pokemon/charmander`
+    
     useEffect(() => {
         fetch(urlUnique, { method: "GET", mode: "cors" })
             .then((response) => response.json())
             .then((respJson) => {
                 convertPokeApiDetailToPokemon(respJson)
-                LoadPokemon(pokemon)
-                return (
-                    <LoadPokemon></LoadPokemon>
-                )
             })
-    })
+    }, [])
+
+    return (
+        <>
+            <CardPoke id={agr.id} nome={agr.nome} type1={agr.tipos[0]} type2={agr.tipos[1]} photo={agr.photoURL}></CardPoke>
+        </>
+    )
 }
 
 // let limit = 6;
