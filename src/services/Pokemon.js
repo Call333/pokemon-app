@@ -4,4 +4,5 @@ export class Pokemon{
     tipos = [];
     tipo;
     photoURL;
+    urlData;
 }

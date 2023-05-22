@@ -6,6 +6,12 @@ import { useEffect, useState } from "react";
 
 export default function PokeApi() {
 
+    const getPokemonsDetail = (pokemon) => {
+        return fetch(pokemon.url)
+            .then((response) => response.json())
+            .then(convertPokeApiDetailToPokemon)
+    }
+
     const convertPokeApiDetailToPokemon = (pokeDetail) => {
         let pokemon = new Pokemon();
         pokemon.nome = pokeDetail.name;
@@ -19,29 +25,61 @@ export default function PokeApi() {
 
         pokemon.photoURL = pokeDetail.sprites.other.home.front_default;
         setAgr(pokemon)
+        isso.push(pokemon)
     }
 
-    let [agr, setAgr] = useState(new Pokemon()) 
+    let [agr, setAgr] = useState(new Pokemon()) // dados
+    let [pokemons, setPokemons] = useState([]) // url + name
+    let [isso, setIsso] = useState([])
 
-    console.log(agr.id);
-    let urlUnique = `https://pokeapi.co/api/v2/pokemon/charmander`
-    
+
+    console.log(agr);
+
+    let limit = 151;
+    let offset = 0;
+
+    let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+
+    // Fetch pra pegar varios
     useEffect(() => {
-        fetch(urlUnique, { method: "GET", mode: "cors" })
+        fetch(url, { method: "GET", mode: "cors" })
             .then((response) => response.json())
-            .then((respJson) => {
-                convertPokeApiDetailToPokemon(respJson)
-            })
+            .then((respJson) => respJson.results)
+            .then((poke) => poke.map((pokem, index) => {
+                pokemons.push(pokem)
+                getPokemonsDetail(pokem)
+            }))
     }, [])
 
+    let urlUnique = 'https://pokeapi.co/api/v2/pokemon/1'
+
+    console.log(pokemons)
+
+    // Fetch pra destrinchar os dados de um pokemon
+    // useEffect(() => {
+    //     fetch(urlUnique, { method: "GET", mode: "cors" })
+    //         .then((response) => response.json())
+    //         .then((respJson) => {
+    //             convertPokeApiDetailToPokemon(respJson)
+    //         })
+    // }, [])
+
+    console.log(isso);
     return (
         <>
-            <CardPoke id={agr.id} nome={agr.nome} type1={agr.tipos[0]} type2={agr.tipos[1]} photo={agr.photoURL}></CardPoke>
+            {
+                isso.map((poke) => {
+                    // if(poke.tipos.length > 1){
+                    //     return(
+                    //         <CardPoke key={poke.id} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} photo={poke.photoURL}></CardPoke>
+                    //     )
+                    // }
+                    return(
+                        <CardPoke key={poke.id} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} type2={poke.tipos[1]} photo={poke.photoURL}></CardPoke>
+                    )
+                })
+            }
         </>
     )
 }
 
-// let limit = 6;
-    // let offset = 0;
-
-    // let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;

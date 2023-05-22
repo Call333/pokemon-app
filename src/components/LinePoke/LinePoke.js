@@ -3,12 +3,13 @@ import CardPoke from '../CardPoke/CardPoke'
 import PokeApi from '../../services/PokeApi';
 
 function LinePoke() {  
-  const qtdPoke = 15
+  const qtdPoke = 1
   return (
     <View style={styles.container}>
-      {Array.from({ length: qtdPoke }).map((_, index) => (
+      {/* {Array.from({ length: qtdPoke }).map((_, index) => (
         <PokeApi key={index} />
-      ))}
+      ))} */}
+      <PokeApi></PokeApi>
     </View>
   );
 }
