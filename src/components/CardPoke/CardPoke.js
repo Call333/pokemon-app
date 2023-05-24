@@ -5,7 +5,7 @@ import { Pokemon } from "../../services/Pokemon";
 function CardPoke(props) {
     return (
         <>
-        <View style={styles.card}>
+        <View style={styles.card} key={props.id}>
             <View style={styles.card__top}>
                 <View style={styles.card_top_number}>
                     <Text>#{props.id}</Text>
@@ -21,7 +21,7 @@ function CardPoke(props) {
                 </View>
                 <Image
                     source={{ uri: props.photo }}
-                    style={{ height: 90, width: 200, marginBottom: 0 }}
+                    style={{ height: 90, width: 90 }}
                 />
             </View>
             {/* <PokeApi></PokeApi> */}
@@ -33,7 +33,7 @@ function CardPoke(props) {
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#48C9B0',
-        height: '8em',
+        height: '9em',
         width: '10em',
         borderRadius: 12,
         display: 'flex',
@@ -56,13 +56,15 @@ const styles = StyleSheet.create({
     card_bottom: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },  
     types: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        height: 40,
     },
     type: {
         height: 15,

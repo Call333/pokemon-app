@@ -4,7 +4,7 @@ import CardPoke from "../components/CardPoke/CardPoke";
 import { useEffect, useState } from "react";
 
 
-export default function PokeApi() {
+export default function PokeApi(props) {
 
     const getPokemonsDetail = (pokemon) => {
         return fetch(pokemon.url)
@@ -23,7 +23,7 @@ export default function PokeApi() {
         pokemon.tipos = types;
         pokemon.tipo = type;
 
-        pokemon.photoURL = pokeDetail.sprites.front_default;
+        pokemon.photoURL = pokeDetail.sprites.other.home.front_default; // pokepokeDetail.sprites.front_default;
         setAgr(pokemon)
         isso.push(pokemon)
     }

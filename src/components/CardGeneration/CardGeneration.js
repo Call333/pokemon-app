@@ -2,22 +2,20 @@ import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
-
-export default function CardGeneration(props) {
+export default function CardGeneration(props, {navigation}) {
+    const [navi, setNavi] = useState(props.navigation1) 
     const [limite, setLimite] = useState(0)
     const [offset, setOffSet] = useState(0)
 
     function att() {
-        setLimite(props.limitPoke)
-        setOffSet(props.offsetPoke)
-        return limite, offset   
+        setLimite(1)
+        setOffSet(2)
+        navi.push('Pokedex')
     }
-
     useEffect(() => {
         console.log(limite);
         console.log(offset);
     }, [limite])
-
     
     return (
         <>

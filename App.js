@@ -11,11 +11,10 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-          <Stack.Screen name="Pokedex" component={Home}/>
-          <Stack.Screen name="Pokemons" component={LinePoke} />
-          {/* <LinePoke></LinePoke> */}
-      </Stack.Navigator>
+      <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen name="Generations" component={Home}/>
+          <Stack.Screen name="Pokedex" component={LinePoke} options={{headerShown: true}}/> 
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }
