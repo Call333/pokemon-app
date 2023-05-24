@@ -23,7 +23,7 @@ export default function PokeApi() {
         pokemon.tipos = types;
         pokemon.tipo = type;
 
-        pokemon.photoURL = pokeDetail.sprites.other.home.front_default;
+        pokemon.photoURL = pokeDetail.sprites.front_default;
         setAgr(pokemon)
         isso.push(pokemon)
     }
@@ -35,8 +35,8 @@ export default function PokeApi() {
 
     console.log(agr);
 
-    let limit = 151;
-    let offset = 0;
+    let limit = 42; // limite de pokemons por pesquisa
+    let offset = 0; // ponto de início da pesquisa
 
     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 

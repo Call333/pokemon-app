@@ -1,15 +1,22 @@
-
 import { StyleSheet, View } from 'react-native';
-import LinePoke from './src/components/LinePoke/LinePoke';
-import CardPoke from './src/components/CardPoke/CardPoke';
-import PokeApi, { LoadPokemon } from './src/services/PokeApi';
 
+import Home from './src/components/Home/Home'
+import LinePoke from './src/components/LinePoke/LinePoke'
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <LinePoke></LinePoke>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+          <Stack.Screen name="Pokedex" component={Home}/>
+          <Stack.Screen name="Pokemons" component={LinePoke} />
+          {/* <LinePoke></LinePoke> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -19,5 +26,6 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center'
   },
 });

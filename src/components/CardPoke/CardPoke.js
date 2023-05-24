@@ -21,7 +21,7 @@ function CardPoke(props) {
                 </View>
                 <Image
                     source={{ uri: props.photo }}
-                    style={{ height: 80, width: 80 }}
+                    style={{ height: 90, width: 200, marginBottom: 0 }}
                 />
             </View>
             {/* <PokeApi></PokeApi> */}
