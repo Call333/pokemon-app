@@ -1,8 +1,7 @@
-import { View } from "react-native";
-import { Pokemon } from "./Pokemon"
-import CardPoke from "../components/CardPoke/CardPoke";
 import { useEffect, useState } from "react";
 
+import { Pokemon } from "./Pokemon"
+import CardPoke from "../components/CardPoke/CardPoke";
 
 export default function PokeApi(props) {
 
@@ -35,8 +34,8 @@ export default function PokeApi(props) {
 
     console.log(agr);
 
-    let limit = 42; // limite de pokemons por pesquisa
-    let offset = 0; // ponto de início da pesquisa
+    let [limit] = useState(props.limitPoke) // limite de pokemons por pesquisa
+    let [offset] = useState(props.offsetPoke); // ponto de início da pesquisa
 
     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
@@ -55,26 +54,12 @@ export default function PokeApi(props) {
 
     console.log(pokemons)
 
-    // Fetch pra destrinchar os dados de um pokemon
-    // useEffect(() => {
-    //     fetch(urlUnique, { method: "GET", mode: "cors" })
-    //         .then((response) => response.json())
-    //         .then((respJson) => {
-    //             convertPokeApiDetailToPokemon(respJson)
-    //         })
-    // }, [])
-
     console.log(isso);
     return (
         <>
             {
                 isso.map((poke) => {
-                    // if(poke.tipos.length > 1){
-                    //     return(
-                    //         <CardPoke key={poke.id} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} photo={poke.photoURL}></CardPoke>
-                    //     )
-                    // }
-                    return(
+                    return (
                         <CardPoke key={poke.id} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} type2={poke.tipos[1]} photo={poke.photoURL}></CardPoke>
                     )
                 })

@@ -1,15 +1,18 @@
 import { StyleSheet, View } from 'react-native';
-import CardPoke from '../CardPoke/CardPoke'
-import PokeApi from '../../services/PokeApi';
 
-function LinePoke() {  
-  const qtdPoke = 1
+import React, { useContext, useState } from 'react';
+
+import PokeApi from '../../services/PokeApi';
+import MyContext from '../contexts/myContext';
+
+function Pokedex() {  
+
   return (
     <View style={styles.container}>
       {/* {Array.from({ length: qtdPoke }).map((_, index) => (
         <PokeApi key={index} />
       ))} */}
-      <PokeApi></PokeApi>
+      <PokeApi limitPoke={9} offsetPoke={0}></PokeApi>
     </View>
   );
 }
@@ -23,4 +26,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LinePoke;
+export default Pokedex;

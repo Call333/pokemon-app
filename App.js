@@ -1,21 +1,31 @@
 import { StyleSheet, View } from 'react-native';
 
 import Home from './src/components/Home/Home'
-import LinePoke from './src/components/LinePoke/LinePoke'
+import Pokedex from './src/components/Pokedex/Pokedex'
+import ApiProvider from './src/components/contexts/myContext';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useState } from 'react';
+
+import PokeApi from './src/services/PokeApi';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+export default function App(props) {
+  const [limite, setLimite] = useState(props.limitPoke)
+  const [offset, setOffSet] = useState(props.offsetPoke)
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name="Generations" component={Home}/>
-          <Stack.Screen name="Pokedex" component={LinePoke} options={{headerShown: true}}/> 
-        </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <ApiProvider>
+          <Stack.Navigator initialRouteName='Home'>
+            <Stack.Screen name="Generations" component={Home} />
+            <Stack.Screen name="Pokedex" component={Pokedex} options={{ headerShown: true }} />
+          </Stack.Navigator>
+        </ApiProvider>
+      </NavigationContainer>
+    </>
   );
 }
 

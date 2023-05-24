@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import MyContext from "../contexts/myContext";
 
-export default function CardGeneration(props, {navigation}) {
-    const [navi, setNavi] = useState(props.navigation1) 
-    const [limite, setLimite] = useState(0)
-    const [offset, setOffSet] = useState(0)
+export default function CardGeneration(props) {
+
+    
+
+    const [navivegacao, setNavi] = useState(props.navigation)
+
+    const [limite, setLimite] = useState(props.limitPoke)
+    const [offset, setOffSet] = useState(props.offsetPoke)
 
     function att() {
-        setLimite(1)
-        setOffSet(2)
-        navi.push('Pokedex')
+        navivegacao.push('Pokedex')
     }
-    useEffect(() => {
-        console.log(limite);
-        console.log(offset);
-    }, [limite])
-    
+
     return (
         <>
-            <TouchableOpacity onPress={att}>
+            <TouchableOpacity onPress={att} key={props.keyId}>
                 <View style={styles.container}>
 
                     <Text style={styles.title}>{props.generation}</Text>
@@ -31,6 +31,7 @@ export default function CardGeneration(props, {navigation}) {
                 </View>
             </TouchableOpacity>
         </>
+        
     )
 }
 
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
 
         margin: 5,
-
         borderRadius: '2em',
+        backgroundColor: '#fff',
 
         shadowColor: "#000",
         shadowOffset: {
@@ -56,8 +57,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.17,
         shadowRadius: 3.05,
         elevation: 4,
-
-        backgroundColor: '#fff'
     },
     title: {
         fontWeight: '600'

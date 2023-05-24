@@ -1,9 +1,9 @@
 
 import { render } from '@testing-library/react-native';
-import  LinePoke  from '../LinePoke';
+import  Pokedex  from '../Pokedex';
 
 describe('LinePoke', () => {
     test('teste para saber se o componente renderizou', () => {
-        expect(render(<LinePoke />))
+        expect(render(<Pokedex />))
     })
 })
