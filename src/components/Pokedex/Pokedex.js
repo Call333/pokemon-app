@@ -7,18 +7,13 @@ import MyContext from '../contexts/myContext';
 
 function Pokedex({route}) {  
   
-  const [a, setA] = useState()
-  useEffect(
-    () => {setA(route.params.paramKey)}, []
-  )
-  
-  console.log(a);
+  let [ limite ] = useState(route.params.limit)
+  let [ offset ] = useState(route.params.offset)
+  console.log(limite);
+  console.log(offset);
   return (
     <View style={styles.container}>
-      {/* {Array.from({ length: qtdPoke }).map((_, index) => (
-        <PokeApi key={index} />
-      ))} */}
-      <PokeApi limitePoke={route.params.limit} offsetPoke={route.params.offset}></PokeApi>
+      <PokeApi limitePoke={limite} offsetPoke={offset}></PokeApi>
     </View>
   );
 }

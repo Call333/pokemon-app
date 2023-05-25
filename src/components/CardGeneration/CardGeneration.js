@@ -15,7 +15,6 @@ export default function CardGeneration(props) {
     const [limite, setLimite] = useState(props.limitPoke)
     const [offset, setOffSet] = useState(props.offsetPoke)
 
-    console.log(navivegacao);
     function att() {
         navivegacao.navigate('Pokedex', {
             limit: limite,
@@ -33,7 +32,7 @@ export default function CardGeneration(props) {
 
                     <Text style={styles.title}>{props.generation}</Text>
                     <Image
-                        style={{ height: '12em', width: '100%', borderRadius: '2em', }}
+                        style={styles.formatImage}
                         source={{ uri: props.urlPhoto }}
                     ></Image>
 
@@ -69,5 +68,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: '600'
+    },
+    formatImage:{ // 352 x 192
+        height: 192, width: 352
     }
 })
