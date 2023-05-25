@@ -1,11 +1,11 @@
 import { View, TextInput, StyleSheet } from "react-native";
-import { EvilIcons } from "@expo/vector-icons";
+// import { EvilIcons } from "@expo/vector-icons";
 
 function SearchBar() {
   return (
     <View style={styles.container}>
       <View style={styles.searchIcon}>
-        <EvilIcons name="search" size={30} color="black" />
+        {/* <EvilIcons name="search" size={30} color="black" /> */}
       </View>
       <TextInput style={styles.searchBar} placeholder="Pesquise..." />
     </View>
