@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
+import { View, TextInput, StyleSheet} from 'react-native'
+
 import { Pokemon } from "./Pokemon"
 import CardPoke from "../components/CardPoke/CardPoke";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function PokeApi(props) {
 
@@ -32,7 +35,7 @@ export default function PokeApi(props) {
     let [isso, setIsso] = useState([])
 
 
-    console.log(agr);
+    // console.log(agr);
 
     let [limit] = useState(props.limitePoke) // limite de pokemons por pesquisa
     let [offset] = useState(props.offsetPoke); // ponto de início da pesquisa
@@ -52,19 +55,31 @@ export default function PokeApi(props) {
 
     let urlUnique = 'https://pokeapi.co/api/v2/pokemon/1'
 
-    console.log(pokemons)
+    // console.log(pokemons)
 
-    console.log(isso);
+    // console.log(isso);
+    const [search, setSearch] = useState('')
     return (
         <>
+            <SearchBar isso={isso}></SearchBar>
+            {/* <View style={styles.container}>
+                <TextInput
+                    style={styles.searchBar}
+                    placeholder="Pesquise..."
+                    onChangeText={(text) => setSearch(text)}
+                />
+            </View>
             {
-                isso.map((poke) => {
-                    return (
-                        <CardPoke key={poke.id} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} type2={poke.tipos[1]} photo={poke.photoURL}></CardPoke>
-                    )
-                })
-            }
+                isso.filter((val) => {
+                    if(search === ''){
+                        return val
+                    }else if(val.nome.toLowerCase().includes(search.toLocaleLowerCase())){
+                        return val
+                    }
+                }).map((poke, index) => (
+                    <CardPoke key={index} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} type2={poke.tipos[1]} photo={poke.photoURL}></CardPoke>
+                ))
+            } */}
         </>
     )
 }
-

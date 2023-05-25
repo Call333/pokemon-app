@@ -1,14 +1,36 @@
+import { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-// import { EvilIcons } from "@expo/vector-icons";
 
-function SearchBar() {
+import CardPoke from "../CardPoke/CardPoke";
+import { EvilIcons } from "@expo/vector-icons";
+
+function SearchBar(props) {
+  const [search, setSearch] = useState('')
+  console.log(search);
   return (
-    <View style={styles.container}>
-      <View style={styles.searchIcon}>
-        {/* <EvilIcons name="search" size={30} color="black" /> */}
+    <>
+      <View style={styles.container}>
+        <View style={styles.searchIcon}>
+        <EvilIcons name="search" size={30} color="black" />
       </View>
-      <TextInput style={styles.searchBar} placeholder="Pesquise..." />
-    </View>
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Pesquise..."
+          onChangeText={(text) => setSearch(text)}
+        />
+      </View>
+        {
+          props.isso.filter((val) => {
+            if (search === '') {
+              return val
+            } else if (val.nome.toLowerCase().includes(search.toLocaleLowerCase())) {
+              return val
+            }
+          }).map((poke, index) => (
+            <CardPoke key={index} id={poke.id} nome={poke.nome} type1={poke.tipos[0]} type2={poke.tipos[1]} photo={poke.photoURL}></CardPoke>
+          ))
+        }
+    </>
   );
 }
 
@@ -18,6 +40,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     alignItems: "center",
+  },
+  container1: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   searchBar: {
     margin: ".5em",

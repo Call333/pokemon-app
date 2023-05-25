@@ -10,13 +10,13 @@ import PokeApi from "../../services/PokeApi";
 
 export default function CardGeneration(props) {
 
-    const [navivegacao, setNavi] = useState(props.navigation)
+    const [navegacao, setNavi] = useState(props.navigation)
 
     const [limite, setLimite] = useState(props.limitPoke)
     const [offset, setOffSet] = useState(props.offsetPoke)
 
     function att() {
-        navivegacao.navigate('Pokedex', {
+        navegacao.navigate('Pokedex', {
             limit: limite,
             offset: offset
         })
