@@ -34,7 +34,7 @@ export default function PokeApi(props) {
 
     console.log(agr);
 
-    let [limit] = useState(props.limitPoke) // limite de pokemons por pesquisa
+    let [limit] = useState(props.limitePoke) // limite de pokemons por pesquisa
     let [offset] = useState(props.offsetPoke); // ponto de início da pesquisa
 
     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;

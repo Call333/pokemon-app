@@ -1,10 +1,10 @@
 import React, { createContext } from "react";
 
-export const MyContext = createContext({});
+export const MyContext = createContext();
 
 function ApiProvider({children}) {
     return(
-        <MyContext.Provider value={{limitPoke: 10, offsetPoke: 0}}>
+        <MyContext.Provider value={{limite: 10}}>
             {children}
         </MyContext.Provider>
     )

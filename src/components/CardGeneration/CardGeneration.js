@@ -3,18 +3,27 @@ import { useContext, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import MyContext from "../contexts/myContext";
+import Pokedex from "../Pokedex/Pokedex";
+import PokeApi from "../../services/PokeApi";
+
+
 
 export default function CardGeneration(props) {
-
-    
 
     const [navivegacao, setNavi] = useState(props.navigation)
 
     const [limite, setLimite] = useState(props.limitPoke)
     const [offset, setOffSet] = useState(props.offsetPoke)
 
+    console.log(navivegacao);
     function att() {
-        navivegacao.push('Pokedex')
+        navivegacao.navigate('Pokedex', {
+            limit: limite,
+            offset: offset
+        })
+        return(
+            <Pokedex aqui={<PokeApi limitePoke={limite} offsetPoke={offset}></PokeApi>}></Pokedex>
+        )
     }
 
     return (
