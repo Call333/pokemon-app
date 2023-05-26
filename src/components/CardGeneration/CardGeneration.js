@@ -20,9 +20,6 @@ export default function CardGeneration(props) {
             limit: limite,
             offset: offset
         })
-        return(
-            <Pokedex aqui={<PokeApi limitePoke={limite} offsetPoke={offset}></PokeApi>}></Pokedex>
-        )
     }
 
     return (

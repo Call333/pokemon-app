@@ -1,10 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import PokeApi from '../../services/PokeApi';
-import MyContext from '../contexts/myContext';
-import SearchBar from '../SearchBar/SearchBar';
 
 function Pokedex({route}) {  
   

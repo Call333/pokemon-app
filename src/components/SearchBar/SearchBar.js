@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
 import CardPoke from "../CardPoke/CardPoke";
-import { EvilIcons } from "@expo/vector-icons";
+// import { EvilIcons } from "@expo/vector-icons";
 
 function SearchBar(props) {
   const [search, setSearch] = useState('')
-  console.log(search);
+  let [itens, setI] = useState(props.isso)
+
+  console.log(search);  
   return (
     <>
       <View style={styles.container}>
         <View style={styles.searchIcon}>
-        <EvilIcons name="search" size={30} color="black" />
+        {/* <EvilIcons name="search" size={30} color="black" /> */}
       </View>
         <TextInput
           style={styles.searchBar}
@@ -20,10 +22,13 @@ function SearchBar(props) {
         />
       </View>
         {
-          props.isso.filter((val) => {
+          itens.filter((val) => {
             if (search === '') {
               return val
-            } else if (val.nome.toLowerCase().includes(search.toLocaleLowerCase())) {
+            } else if (
+              (val.nome.toLowerCase().includes(search.toLocaleLowerCase())) || 
+              (val.id.toString().toLowerCase().includes(search.toLocaleLowerCase()))
+              ) {
               return val
             }
           }).map((poke, index) => (

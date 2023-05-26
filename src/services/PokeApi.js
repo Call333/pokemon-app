@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { View, TextInput, StyleSheet} from 'react-native'
-
 import { Pokemon } from "./Pokemon"
-import CardPoke from "../components/CardPoke/CardPoke";
+
 import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function PokeApi(props) {
