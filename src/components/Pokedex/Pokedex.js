@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import React, { useState } from 'react';
 
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
+        backgroundColor: 'white'
     },
 });
 

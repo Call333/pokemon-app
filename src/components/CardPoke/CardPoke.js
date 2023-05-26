@@ -8,7 +8,7 @@ function CardPoke(props) {
         <View style={styles.card} key={props.id}>
             <View style={styles.card__top}>
                 <View style={styles.card_top_number}>
-                    <Text>#{props.id}</Text>
+                    <Text style={styles.cardNumber}>#{props.id}</Text>
                 </View>
                 <View style={styles.card_top_name}>
                     <Text style={{fontWeight: '600', textTransform: 'capitalize'}}>{props.nome}</Text>
@@ -32,7 +32,7 @@ function CardPoke(props) {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#48C9B0',
+        backgroundColor: '#d3d3d3',
         height: '9em',
         width: '10em',
         borderRadius: 12,
@@ -41,7 +41,17 @@ const styles = StyleSheet.create({
         padding: 10,
         fontFamily: 'Segoi UI',
         margin: '2%',
-        
+        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+        justifyContent: 'center'
+    },
+    cardNumber: {
+        color: 'white',
+        backgroundColor: 'red',
+        borderRadius: 50,
+        width: '3em',
+        textAlign: 'center',
+        right: 0,
+        position: 'absolute',
     },
     card__top: {
         display: 'flex',
@@ -69,7 +79,8 @@ const styles = StyleSheet.create({
     type: {
         height: 15,
         width: 50,
-        borderRadius: 12,
+        padding: '1em',
+        borderRadius: 10,
         backgroundColor: '#F9EBEA',
         marginBottom: 5,
         display: "flex",

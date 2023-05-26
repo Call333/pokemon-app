@@ -42,7 +42,7 @@ export default function CardGeneration(props) {
 
 const styles = StyleSheet.create({
     container: {
-        height: '14em',
+        height: '15em',
         width: '22em',
 
         display: 'flex',
