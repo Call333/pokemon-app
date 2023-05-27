@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     },
     buttonLogin: {
         height: '3em',
-        width: '18em',
+        width: '10em',
         backgroundColor: '#9DB2BF',
         borderRadius: '0.7em',
         display: 'flex',

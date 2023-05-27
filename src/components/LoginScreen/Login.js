@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         height: '3em',
         width: '10em',
         backgroundColor: '#9DB2BF',
-        borderRadius: '2em',
+        borderRadius: '0.7em',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

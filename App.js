@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import AppNavigation from './src/components/AppNavigation/AppNavigation';
-import Login from './src/components/LoginScreen/Login';
-import AppNavigationLogin from './src/components/AppNavigation/AppNavigationLogin';
+import Login from './src/components/LoginScreen/Login'; 
 
 
 import { auth } from './src/services/firebase/autentication/Auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import CentralNavigation from './src/components/AppNavigation/Central';
 import Register from './src/components/RegisterScreen/Register';
 
 
