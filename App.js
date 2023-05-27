@@ -16,7 +16,7 @@ export default function App() {
   const [user, setUser] = useState()
   useEffect((
     () => setUser(auth.currentUser)
-  ))
+  ), [user])
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
@@ -30,18 +30,18 @@ export default function App() {
     }
   });
 
-  if (user) {
-    return (
-      <AppNavigation></AppNavigation>
-    )
-  } else {
-    return (
-      <AppNavigationLogin></AppNavigationLogin>
-    )
-  }
-  // return(
-  //   <AppNavigation></AppNavigation>
-  // )
+  // if (user) {
+  //   return (
+  //     <AppNavigation></AppNavigation>
+  //   )
+  // } else {
+  //   return (
+  //     <Login></Login>
+  //   )
+  // }
+  return(
+    <AppNavigation></AppNavigation>
+  )
 }
 
 const styles = StyleSheet.create({

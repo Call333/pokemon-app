@@ -15,7 +15,9 @@ export default function AppNavigation() {
     return (
         <NavigationContainer independent={false}>
             <ApiProvider>
-                <Stack.Navigator initialRouteName='Generations'>
+                <Stack.Navigator initialRouteName='Login'>
+                <Stack.Screen name='Login' component={Login} />
+                    <Stack.Screen name='Register' component={Register} />
                     <Stack.Screen name="Generations" component={Home} />
                     <Stack.Screen name="Pokedex" component={Pokedex} options={{ headerShown: true }} />
                 </Stack.Navigator>

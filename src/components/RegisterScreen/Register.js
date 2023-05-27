@@ -21,7 +21,7 @@ function Register({ navigation }) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
             });
-        navigation.replace('Login')
+        navigation.replace('Generations')
     }
 
     return (
