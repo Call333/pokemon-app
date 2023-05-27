@@ -1,32 +1,47 @@
-import { StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 
-import Home from './src/components/Home/Home'
-import Pokedex from './src/components/Pokedex/Pokedex'
-import ApiProvider from './src/components/contexts/myContext';
+import AppNavigation from './src/components/AppNavigation/AppNavigation';
+import Login from './src/components/LoginScreen/Login';
+import AppNavigationLogin from './src/components/AppNavigation/AppNavigationLogin';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useState } from 'react';
 
-import PokeApi from './src/services/PokeApi';
+import { auth } from './src/services/firebase/autentication/Auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import CentralNavigation from './src/components/AppNavigation/Central';
 
-const Stack = createNativeStackNavigator();
 
-export default function App(props) {
-  const [limite, setLimite] = useState(props.limitPoke)
-  const [offset, setOffSet] = useState(props.offsetPoke)
-  return (
-    <>
-      <NavigationContainer>
-        <ApiProvider>
-          <Stack.Navigator initialRouteName='Home'>
-            <Stack.Screen name="Generations" component={Home} />
-            <Stack.Screen name="Pokedex" component={Pokedex} options={{ headerShown: true }} />
-          </Stack.Navigator>
-        </ApiProvider>
-      </NavigationContainer>
-    </>
-  );
+export default function App() {
+
+  const [user, setUser] = useState()
+  useEffect((
+    () => setUser(auth.currentUser)
+  ))
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      console.log('usuário logado');
+    } else {
+      // User is signed out
+      // ...
+      console.log('usuário deslogado');
+    }
+  });
+
+  if (user) {
+    return (
+      <AppNavigation></AppNavigation>
+    )
+  } else {
+    return (
+      <AppNavigationLogin></AppNavigationLogin>
+    )
+  }
+  // return(
+  //   <AppNavigation></AppNavigation>
+  // )
 }
 
 const styles = StyleSheet.create({
