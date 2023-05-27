@@ -6,7 +6,7 @@ import { auth } from '../../services/firebase/autentication/Auth'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 function Register({ navigation }) {
-    console.log(navigation);
+    
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [userName, setUserName] = useState('')
@@ -15,13 +15,14 @@ function Register({ navigation }) {
         createUserWithEmailAndPassword(auth, email, pass).
             then((userCredential) => {
                 const user = userCredential.user
+                console.log(user);
                 user.displayName = userName
-                console.log(user.displayName);
+                console.log(user);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
             });
-        navigation.replace('Generations')
+        navigation.replace('Login')
     }
 
     return (
@@ -62,8 +63,8 @@ function Register({ navigation }) {
                     <Text style={{ color: '#000', fontSize: '1.5em', }}>Criar Conta</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonLogin}>
-                    <Text style={{ color: '#000', fontSize: '1.5em', }}>Logar</Text>
+                <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.replace('Login')}>
+                    <Text style={{ color: '#000', fontSize: '1.5em', }}>Entrar</Text>
                 </TouchableOpacity>
             </View>
 

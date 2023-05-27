@@ -1,31 +1,54 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { auth, } from '../../services/firebase/autentication/Auth'
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, app } from '../../services/firebase/autentication/Auth'
+import { signInWithEmailAndPassword, onAuthStateChanged, getAuth } from 'firebase/auth';
 
-import AppNavigation from '../AppNavigation/AppNavigation';
-import Register from '../RegisterScreen/Register';
-function Login( {navigation} ) {
-    console.log(navigation);
+function Login({ navigation }) {
+
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    const [user, setUser] = useState(auth.currentUser)
+    console.log(user);
 
     function logarConta() {
         signInWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
                 const user = userCredential.user;
+                console.log(user);
                 navigation.replace('Generations')
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log('Usuário não existe');
+                navigation.replace('Cadastro de Usuário')
             });
     }
 
-    function criarConta(){
-        navigation.replace('Register')
+
+    useEffect(
+        () => {
+            onAuthStateChanged(getAuth(app), (user) => {
+                if (user) {
+                    console.log("User logged in...");
+                    setUser(user);
+                } else {
+                    console.log("User not logged in...");
+                    setUser(null);
+                }
+            });
+
+            if (user) {
+                navigation.replace('Generations')
+            } else {
+                navigation.navigate('Login')
+            }
+        }, [user]
+    )
+
+    function criarConta() {
+        navigation.replace('Cadastro de Usuário')
     }
 
     return (
@@ -59,7 +82,7 @@ function Login( {navigation} ) {
                 <TouchableOpacity style={styles.buttonLogin} onPress={criarConta}>
                     <Text style={{ color: '#000', fontSize: '1.5em', }}>Criar Conta</Text>
                 </TouchableOpacity>
-                
+
             </View>
         </View>
     )
