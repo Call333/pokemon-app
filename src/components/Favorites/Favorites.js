@@ -60,11 +60,11 @@ function Favorites(props) {
         {pokemons.map((pokemon, i) => {
           if (pokemon.tipos.length > 1) {
             return (
-              <CardFavo key={i} id={pokemon.id} name={pokemon.nome} photoURL={pokemon.photoURL} tipos={pokemon.tipos}></CardFavo>
+              <CardFavo key={pokemon.id} id={pokemon.id} name={pokemon.nome} photoURL={pokemon.photoURL} tipos={pokemon.tipos}></CardFavo>
             )
           } else {
             return (
-              <CardFavo key={i} id={pokemon.id} name={pokemon.nome} photoURL={pokemon.photoURL} tipos={pokemon.tipos}></CardFavo>
+              <CardFavo key={pokemon.id} id={pokemon.id} name={pokemon.nome} photoURL={pokemon.photoURL} tipos={pokemon.tipos}></CardFavo>
             )
           }
         })}
@@ -83,67 +83,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: 'white'
-  },
-  Touchable: {
-    height: '9em',
-    width: '10em',
-    margin: '2%',
-    borderRadius: 12,
-  },
-  card: {
-    backgroundColor: '#d3d3d3',
-    height: '9em',
-    width: '10em',
-    borderRadius: 12,
-    display: 'flex',
-    flexDirection: 'column',
-    padding: 10,
-    fontFamily: 'Segoi UI',
-    margin: '2%',
-    boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-    justifyContent: 'center'
-  },
-  cardNumber: {
-    color: 'white',
-    backgroundColor: 'red',
-    borderRadius: 50,
-    width: '3em',
-    textAlign: 'center',
-    right: 0,
-    position: 'absolute',
-  },
-  card__top: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  card_top_number: {
-    textAlign: 'right',
-  },
-  card_top_name: {
-
-  },
-  card_bottom: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  types: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textTransform: 'capitalize',
-    height: 40,
-  },
-  type: {
-    height: 15,
-    width: 50,
-    padding: '1em',
-    borderRadius: 10,
-    backgroundColor: '#F9EBEA',
-    marginBottom: 5,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: 'center',
-  },
+  }
 })

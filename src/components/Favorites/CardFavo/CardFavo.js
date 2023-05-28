@@ -14,7 +14,7 @@ export default function CardFavo(props) {
     const A = () => {
         if (types.length > 1 && types != undefined) {
             return (
-                <View style={styles.types} key={props.nome}>
+                <View style={styles.types} key={props.id}>
                     <Text style={styles.type}>{types[0]}</Text>
                     <Text style={styles.type}>{types[1]}</Text>
                 </View>
@@ -30,8 +30,8 @@ export default function CardFavo(props) {
 
     return (
         <>
-            <TouchableOpacity style={styles.Touchable}>
-                <View style={styles.card} key={props.id}>
+            <TouchableOpacity style={styles.Touchable} >
+                <View style={styles.card} key={props.name}>
                     <View style={styles.card__top}>
                         <View style={styles.card_top_number}>
                             <Text style={styles.cardNumber}>#{props.id}</Text>
