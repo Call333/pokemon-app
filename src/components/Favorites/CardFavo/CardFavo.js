@@ -2,7 +2,17 @@ import { useState, useEffect } from "react"
 
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
+import {doc, deleteDoc} from 'firebase/firestore'
+
+import { db } from "../../../services/firebase/firestore/firestore"
+import { auth } from "../../../services/firebase/autentication/Auth"
+
 export default function CardFavo(props) {
+
+    function desfavoritar(){
+        deleteDoc(doc(db, auth.currentUser.uid, props.name))
+    }
+
     const [types, setTypes] = useState([props.tipos])
 
     useEffect(
@@ -30,7 +40,7 @@ export default function CardFavo(props) {
 
     return (
         <>
-            <TouchableOpacity style={styles.Touchable} >
+            <TouchableOpacity style={styles.Touchable} onPress={desfavoritar}>
                 <View style={styles.card} key={props.name}>
                     <View style={styles.card__top}>
                         <View style={styles.card_top_number}>

@@ -59,7 +59,7 @@ function Favorites(props) {
         {pokemons.map((pokemon, i) => {
           if (pokemon.tipos.length > 1) {
             return (
-              <CardFavo key={pokemon.id} id={pokemon.id} name={pokemon.nome} photoURL={pokemon.photoURL} tipos={pokemon.tipos}></CardFavo>
+              <CardFavo key={pokemon.id} id={pokemon.id} name={pokemon.nome} photoURL={pokemon.photoURL} tipos={pokemon.tipos} ></CardFavo>
             )
           } else {
             return (

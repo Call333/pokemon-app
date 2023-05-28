@@ -14,9 +14,7 @@ import { getAuth } from "firebase/auth";
 
 function Home({ navigation }) {
 
-    const auth = getAuth().currentUser;
-
-    console.log(auth);
+    const auth = getAuth();
 
     function irFavoritos(){
         navigation.navigate('Favoritos')

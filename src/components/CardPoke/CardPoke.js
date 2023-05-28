@@ -23,7 +23,7 @@ function CardPoke(props) {
         }, [types, type]
     )
 
-    const addPoke = () => {
+    const favoritar = () => {
         console.log(uid);
         if (props.id != undefined && types.length > 1) {
             setDoc(doc(db, user.uid, props.nome), {
@@ -64,7 +64,7 @@ function CardPoke(props) {
 
     return (
         <>
-            <TouchableOpacity style={styles.Touchable} onPress={addPoke}>
+            <TouchableOpacity style={styles.Touchable} onPress={favoritar}>
                 <View style={styles.card} key={props.id}>
                     <View style={styles.card__top}>
                         <View style={styles.card_top_number}>
