@@ -33,7 +33,8 @@ export default function PokeApi(props) {
     let [isso, setIsso] = useState([])
 
 
-    console.log(agr);
+    
+    // console.log(agr);
 
     let [limit] = useState(props.limitePoke) // limite de pokemons por pesquisa
     let [offset] = useState(props.offsetPoke); // ponto de início da pesquisa
@@ -55,8 +56,8 @@ export default function PokeApi(props) {
 
     console.log(pokemons)
 
-    console.log(isso);
-    const [search, setSearch] = useState('')
+    // console.log(isso);
+ 
     return (
         <>
             <SearchBar isso={isso}></SearchBar>

@@ -1,57 +1,23 @@
-import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import PokeApi from "../../services/PokeApi";
-import { Pokemon } from "../../services/Pokemon";
+import { useState, useEffect } from "react"
 
-import { auth } from "../../services/firebase/autentication/Auth";
-import { db } from './../../services/firebase/firestore/firestore'
-import { setDoc, doc, serverTimestamp } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
-function CardPoke(props) {
-    
-    const [user, setUser] = useState(auth.currentUser)
-    const [uid] = useState(user.getIdToken())
-
-    const [types, setTypes] = useState([props.types])
-
-    const [type, setType] = useState(props.type)
+export default function CardFavo(props) {
+    const [types, setTypes] = useState([props.tipos])
 
     useEffect(
         () => {
-            setType(props.type)
-            setTypes(props.types)
-        }, [types, type]
+            setTypes(props.tipos)
+        }, [types]
     )
-
-    const addPoke = () => {
-        console.log(uid);
-        if (props.id != undefined && types.length > 1) {
-            setDoc(doc(db, user.uid, props.nome), {
-                name: props.nome,
-                number: props.id,
-                types: [types[0], types[1]],
-                photoURL: props.photo,
-                timestamp: serverTimestamp()
-            });
-        } else {
-            setDoc(doc(db, user.uid, props.nome), {
-                name: props.nome,
-                number: props.id,
-                types: [types[0]],
-                photoURL: props.photo,
-                timestamp: serverTimestamp()
-            });
-        }
-    }
 
     const A = () => {
         if (types.length > 1 && types != undefined) {
             return (
                 <View style={styles.types} key={props.nome}>
-                    <Text style={styles.type} >{types[0]}</Text>
+                    <Text style={styles.type}>{types[0]}</Text>
                     <Text style={styles.type}>{types[1]}</Text>
                 </View>
-
             )
         } else {
             return (
@@ -64,20 +30,20 @@ function CardPoke(props) {
 
     return (
         <>
-            <TouchableOpacity style={styles.Touchable} onPress={addPoke}>
+            <TouchableOpacity style={styles.Touchable}>
                 <View style={styles.card} key={props.id}>
                     <View style={styles.card__top}>
                         <View style={styles.card_top_number}>
                             <Text style={styles.cardNumber}>#{props.id}</Text>
                         </View>
                         <View style={styles.card_top_name}>
-                            <Text style={{ fontWeight: '600', textTransform: 'capitalize' }}>{props.nome}</Text>
+                            <Text style={{ fontWeight: '600', textTransform: 'capitalize' }}>{props.name}</Text>
                         </View>
                     </View>
                     <View style={styles.card_bottom}>
                         <A></A>
                         <Image
-                            source={{ uri: props.photo }}
+                            source={{ uri: props.photoURL }}
                             style={{ height: 90, width: 90 }}
                         />
                     </View>
@@ -89,6 +55,13 @@ function CardPoke(props) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: 'white'
+    },
     Touchable: {
         height: '9em',
         width: '10em',
@@ -152,5 +125,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 })
-
-export default CardPoke;
