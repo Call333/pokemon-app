@@ -9,14 +9,12 @@ function Register({ navigation }) {
     
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
-    const [userName, setUserName] = useState('')
 
     function criarConta() {
         createUserWithEmailAndPassword(auth, email, pass).
             then((userCredential) => {
                 const user = userCredential.user
                 console.log(user);
-                user.displayName = userName
                 console.log(user);
             }).catch((error) => {
                 const errorCode = error.code;
@@ -35,13 +33,6 @@ function Register({ navigation }) {
             </View>
 
             <View style={styles.containerInputs}>
-
-                {/* <TextInput
-                    style={styles.TextInputs}
-                    placeholder='Digite seu usuário'
-                    onChangeText={(text) => setUserName(text)}
-                    value={userName}
-                /> */}
 
                 <TextInput
                     style={styles.TextInputs}

@@ -1,12 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-import MyContext from "../contexts/myContext";
-import Pokedex from "../Pokedex/Pokedex";
-import PokeApi from "../../services/PokeApi";
-
-
 
 export default function CardGeneration(props) {
 
@@ -36,7 +30,6 @@ export default function CardGeneration(props) {
                 </View>
             </TouchableOpacity>
         </>
-        
     )
 }
 

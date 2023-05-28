@@ -1,10 +1,8 @@
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
-import { useState } from 'react'
-
 import CardGeneration from "../CardGeneration/CardGeneration";
 
-import { getAuth, reauthenticateWithCredential } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 /**
  * 1º limitPoke={151} offsetPoke={0}
  * 2º limitPoke={100} offsetPoke={151}
@@ -16,8 +14,8 @@ import { getAuth, reauthenticateWithCredential } from "firebase/auth";
 
 function Home({ navigation }) {
 
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const auth = getAuth().currentUser;
+
     console.log(auth);
 
     function irFavoritos(){

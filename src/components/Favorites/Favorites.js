@@ -1,5 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
-import SearchBar from '../SearchBar/SearchBar'
+import { View, StyleSheet } from 'react-native'
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../../services/firebase/firestore/firestore';
